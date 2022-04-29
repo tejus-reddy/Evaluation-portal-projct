@@ -1,0 +1,160 @@
+create database evaluation
+
+use evaluation
+
+create table Difficultylvel(
+LevelId int primary key,
+LevelName varchar(30)
+)
+insert into Difficultylvel values (1,'Beginner'),(2,'Intermediate'),(3,'Advanced')
+select * from Difficultylvel
+
+
+create table Subjects(
+SubjectId varchar(6) primary key,
+SubjectName varchar(30)
+)
+insert into Subjects values ('sub001','c#'),('sub002','Java'),('sub003','Azure'),('sub004','c++'),('sub005','MS SQL'),('sub006','Oracle PLSQL'),
+('sub007','.Net'),('sub008','AWS')
+
+select * from Subjects
+
+select * from Usertype
+
+create table UsersAdmin(
+UserEmail varchar(30) primary key,
+Username varchar(30),
+Password varchar(10),
+UserType varchar(1) references Usertype(UserTypeId)
+)
+
+select * from UsersAdmin
+
+
+create table QuestionAnswer(
+SubjectId varchar(6) references Subjects(SubjectId),
+QuestionLevel int references Difficultylvel(LevelId),
+QuestionId varchar(10) primary key,
+QuestionText varchar(1000),
+RightAnswer varchar(100),
+Option1 varchar(100),
+Option2 varchar(100),
+Option3 varchar(100),
+Option4 varchar(100)
+)
+select * from QuestionAnswer
+
+create table Userdetails
+(Studentid varchar(30) references UsersAdmin(UserEmail),
+SubjectName varchar(30),
+Experience int primary key,
+)
+
+create table Result(
+Studentid varchar(30) references UsersAdmin(UserEmail),
+SubjectName varchar(30),
+Experience int references Userdetails(Experience),
+Marksobtained int,
+QnsAttempted int,
+NoCrtAnswers int
+)
+select * from Result
+
+insert into QuestionAnswer values
+('sub001',1,'qus001','Which of the following converts a type (integer or string type) to date-time structures in C#?','ToDateTime','ToString','ToSingle','ToChar','ToDateTime'),
+('sub001',2,'qus002','Which of the following converts a type to an unsigned int type in C#?','ToUInt16','ToType','ToUInt16','ToSingle','ToString'),
+('sub001',3,'qus003','Which of the following access specifier in C# allows a class to expose its member variables and member functions to other functions and objects?','Public','Public','Private','Protected','Internal'),
+('sub001',1,'qus004','Which of the following preprocessor directive allows you to undefine a symbol in C#?','undef','define','undef','region','unregion'),
+('sub001',2,'qus005','CLR is responsible for ____ ?','All the answers are true','Garbage-collector','Code access security','Code verification','All the answers are true')
+
+insert into QuestionAnswer values
+('sub001',3,'qus006','Garbage collector (GC) includes ___ generations.','Three','One','Two','Three','Five'),
+('sub001',1,'qus007','IL in .Net means ____?','Intermediate Language','Intermediate Language','International Language','Interoperate Language','Intermediate Local'),
+('sub001',2,'qus008','Which of the following is the valid size of float data type?','4 Bytes','4 Bytes','6 Bytes','8 Bytes','10 Bytes'),
+('sub001',3,'qus009','We use ___ to fully abstract a class from its implimentation.','Interfaces','Interfaces','objects','Packages','Function Definitions'),
+('sub001',1,'qus010','Which of the following is not the ordered collection class?','BitArray','Queue','BitArray','Stack','All of the above')
+
+insert into QuestionAnswer values('sub005',2,'qus011','When was the first version of Microsoft SQL Server released?','1988','1991','1990','1988','1983')
+insert into QuestionAnswer values('sub005',3,'qus012','Which of the following is a free database software running free SQL Server technology?','SQL Server Express','SQL Server Web','SQL Server Enterprise','SQL Server Workgroup','SQL Server Express')
+insert into QuestionAnswer values('sub005',1,'qus013','Which of the following companies originally worked together to create and market the first version of SQL Server?','All of the Mentioned','Sybase','Ashton-Tate','Microsoft','All of the Mentioned')
+insert into QuestionAnswer values('sub005',2,'qus014','Which of the following language is used for procedural flow in SQL Server?','Control-of-flow language','Control-of-flow language','Flow language','Control language','None of the mentioned')
+insert into QuestionAnswer values('sub005',3,'qus015','Exception handling is possible in SQL Server using ___','THROW','FINAL','FINALLY','THROW','All of the mentioned')
+insert into QuestionAnswer values('sub005',1,'qus016','Which of the following catalog view is used for SQL Server Extended Events?','sys.server_event_session_actions','sys.server_event_session_actions','sys.server_sessions','sys.server_event_sess','all of the mentioned')
+insert into QuestionAnswer values('sub005',2,'qus017','Which of the following tool is used for purpose of data auditing for SQL Server only?','ApexSQL','Idera','ApexSQL','SQL Ninja','SQL Audit')
+
+
+insert into QuestionAnswer values('sub006',3,'qus018','Which of the following is a way of passing parameters to PL/SQL subprograms?','All of the above','Positional notation','Named notation','Mixed notation','All of the above')
+insert into QuestionAnswer values('sub006',1,'qus019','Any subprogram not in the package specification but coded in the package body is called a','Private object','Public object','Private object','None of the above','Both of the above')
+insert into QuestionAnswer values('sub006',2,'qus020','Which of the following is used for reading and writing operating-system files?','UTL_FILE','UTL_FILE','UTL_HTTP','UTL_SMTP','None of the above')
+insert into QuestionAnswer values('sub006',3,'qus021','By using which clause, the mode is OUT, so you cannot specify a parameter mode for output bind arguments?','RETURNING INTO Clause','USING Clause','RETURNING INTO Clause','Both A & B','None of the above')
+insert into QuestionAnswer values('sub006',1,'qus022','In which of the following, do you specify the same parameters in the same order as they are declared in the procedure?','Positional notation','Positional notation','Named notation','Mixed notation','All mentioned above')
+insert into QuestionAnswer values('sub006',2,'qus023','PL/SQL is a transaction processing procedural language that has which of the following advantages?','All mentioned above','Integration with database','Better Performance','Higher Productivity','All mentioned above')
+insert into QuestionAnswer values('sub006',1,'qus024','The LOB objects can be stored in-line or out-of-line. The in-line storage means that objects are stored.','Along with the row','Along with the row','Outside the row','Both A & B','None of the above')
+
+insert into QuestionAnswer values('sub003',3,'qus025','Which of the following options is not defined as a type of cloud deployment model?','Distributed cloud','Hybrid cloud','Private cloud','Public cloud','Distributed cloud')
+insert into QuestionAnswer values('sub003',2,'qus026','Which of the following is not a feature of Management groups?','Each management group and subscription can have multiple parents.','A management group tree can support up to six levels of depth.','Each management group and subscription can have multiple parents.','10,000 management groups can be supported in a single directory.','Each management group can have many children.')
+insert into QuestionAnswer values('sub003',3,'qus027','What can you use to enable large-scale parallel and high-performance computing (HPC) jobs with the ability to scale to tens, hundreds, or thousands of VMs?','Azure Batch','Containers','Virtual Machine Scale Sets','Azure Virtual Machines','Azure Batch')
+insert into QuestionAnswer values('sub003',1,'qus028','Which of the following cloud database solutions provides developers with the ability to use multiple APIs that they may already be familiar with?','Cosmos DB','Cosmos DB','Azure Database for PostgreSQL','Azure SQL Database','Azure Database for MySQL')
+insert into QuestionAnswer values('sub003',2,'qus029','Hyperscale (Citus) is a feature of which Cloud based Database solution?','Azure Database for PostgreSQL','Cosmos DB','Azure SQL Database','Azure Database for PostgreSQL','Azure Database for MySQL')
+insert into QuestionAnswer values('sub003',3,'qus030','Azure Storage plays the same role in Azure that __ plays in Amazon Web Services.','S3','S3','EC2','EC3','All of the mentioned')
+insert into QuestionAnswer values('sub003',1,'qus031','What does IPsec in Azure platform refers to ?','Internet Protocol Security protocol suite','Commodity servers','Internet Standard','Internet Protocol Security protocol suite','None of the above')
+
+insert into QuestionAnswer values
+('sub002',2,'qus032','Which of the following option leads to the portability and security of Java?','Bytecode is executed by JVM','Bytecode is executed by JVM','The applet makes the Java code secure and portable','Use of exception handling','Dynamic binding between objects'),
+('sub002',3,'qus033','Which of the following is not a Java features?','Use of pointers','Dynamic','Architecture Neutral','Use of pointers','Object-oriented'),
+('sub002',1,'qus034','The \u0021 article referred to as a','Unicode escape sequence','Unicode escape sequence','Octal escape','Hexadecimal','Line feed'),
+('sub002',2,'qus035','___ is used to find and fix bugs in the Java programs.','JDB','JRE','JDK','JVM','JDB'),
+('sub002',3,'qus036','Which of the following is a valid declaration of a char?','char ch = \utea;','char ch = \utea;','char ca = tea;','char cr = \u0223;','char cc = \itea;'),
+('sub002',1,'qus037','What is the return type of the hashCode() method in the Object class?','int','Object','int','long','void'),
+('sub002',2,'qus038','Which of the following is a valid long literal?','0xnf029L','ABH8097','L990023','904423','0xnf029L'),
+('sub002',3,'qus039','What does the expression float a = 35 / 0 return?','Infinity','0','Not a Number','Infinity','Run time exception'),
+('sub002',1,'qus040','Which of the following tool is used to generate API documentation in HTML format from doc comments in source code?','Javadoc tool','javap tool','javaw command','Javadoc tool','javah command'),
+('sub002',2,'qus041','What do you mean by nameless objects?','An object that has no reference','An object created by using the new keyword','An object of a superclass created in the subclass.','An object without having any name but having a reference','An object that has no reference'),
+('sub004',3,'qus042','Which of the following type is provided by C++ but not C?','bool','double','float','int','bool'),
+('sub004',1,'qus043','Which of the following correctly declares an array in C++?','int array[10];',' array{10};','array array[10];','int array;','int array[10];'),
+('sub004',2,'qus044','What is meant by a polymorphism in C++?','class having many forms','class having only single form','class having four forms','class having many forms','class having two forms'),
+('sub004',3,'qus045','Which of the following constructors are provided by the C++ compiler if not defined in a class?','All of the mentioned','Copy constructor','Default constructor','Assignment constructor','All of the mentioned'),
+('sub004',1,'qus046','Which concept allows you to reuse the written code in C++?','Inheritance','Inheritance','Polymorphism','Abstraction','Encapsulation'),
+('sub004',2,'qus047','What is the benefit of c++ input and output over c input and output?','Type safety','Both Type safety & Exception','Sequence container','Exception','Type safety')
+
+select * from QuestionAnswer order by QuestionId
+
+insert into QuestionAnswer values
+('sub007',3,'qus048','A variable which is declared inside a method is called a __ variable?','local','serial','local','private','static'),
+('sub007',1,'qus049','Feature of a local variable?','It must be declared within a method','It can be used anywhere in the program','It must accept a class','It must be declared within a method','It represents a class object'),
+('sub007',2,'qus050','CLR is the .NET equivalent of ___','Java Virtual Machine','Java Virtual Machine','Common Language Runtime',	'Common Type System','Common Language Specification'),
+('sub007',3,'qus051','The CLR is physically represented by an assembly named ___','mscoree.dll','mscoree.dll','mcoree.dll','msoree.dll','mscor.dll'),
+('sub007',1,'qus052','Which commands are used to specify settings of an .aspx file?','Directives','Class','Directives','Events','Validation'),
+('sub007',2,'qus053','The @Implements directive','indicates that a page or user control implements a specified .NET Framework interface','imports a namespace into current page or user control','assigns a class or virtual path used to type the Master property of a page', 'indicates that a page or user control implements a specified .NET Framework interface','none of these above'),
+('sub007',3,'qus054','A module which is collection of functions and data,designed to be used by another application is called','DLL','abandon','DLL','LCID','PICS'),
+('sub007',1,'qus055','In ASP.NET web application configuration settings are defined in','Web.config','ProcompiledApp.config','machine.config','Web.config','System.config'),
+('sub007',2,'qus056','Which of the following utilities can be used to compile managed assemblies into processor-specific native code?','nden','gacutil','ngen','sn','dumpbin'),
+('sub007',3,'qus057','Which of the following components of the .NET framework provide an extensible set of classes that can be used by any .NET compliant programming language?','.NET class libraries','.NET class libraries','Common Language Runtime','Common Language Infrastructure','Component Object Model')
+
+insert into QuestionAnswer values
+('sub008',1,'qus058','What option is best for auto scaling your EC2 instances for predictable traffic patterns?','Scale based on a schedule','Scale based on a schedule','manual scaling','scale based on demand','maintain current levels at all times'),
+
+('sub008',2,'qus059','Which big data store will let you store large streams of user activity data coming from both web and mobile applications?','Red Shift','Neptune','RDS for SQL server','Redshift','Aurora'),
+
+('sub008',3,'qus060','A principle of DevOps is to view infrastructure as code. Which AWS service allows you to script your AWS infrastructure?','CloudFormation	AWS config','Cloud Trail','CloudFormation','AWS service Catalog','CloudFormation	AWS config'),
+
+('sub008',1,'qus061','What in-memory caching server is not supported by ElastiCache?','Elasticsearch','Redis 5','Memcached','Elasticsearch','Redis 3'),
+
+('sub008',2,'qus062','Can you lose the public IP address associated with your EC2 instance?','Yes, you can lose it if you stop and start the instance.','Yes, you can lose it if you reboot the instance.','Yes, you can lose it if you stop and start the instance.','No. you will never lose the public IP address for your instance.','Yes, you can lose it when you edit the instance properties and release the IP address.'),
+
+('sub008',3,'qus063','A nontechnical client wants to migrate a WordPress site to AWS from a private server managed by a third-party hosting company. Which AWS service should you recommend to migrate the site to?','Lightsail','Sight','CloudFront','An EC2 instance launched from the official WordPress AMI	S3','Lightsail'),
+
+('sub008',1,'qus064','Which feature can be used to respond to a sudden increase in web traffic?','all of these answers',' EC2 Auto Scaling groups','AWS Shield Advanced','RDS Read Replicas','all of these answers'),
+
+('sub008',2,'qus065','You need a schemaless database. Which Amazon database service provides that solution?','DynamoDB','ORDS','Aurora','Redshift','DynamoDB'),
+
+('sub008',3,'qus066','Which communication channel does SNS not support natively?','automated phone call','OSMS text message','Push Notification','email','automated phone call'),
+
+('sub008',1,'qus067','What AWS services can help you automate your development pipeline for continuous integration and continuous deployment?','all of these answers','CodePipeline','all of these answers','CodeDeploy','CodeBuild')
+
+create table UserType(
+UserId varchar(1) primary key,
+Userstype varchar(10)
+)
+
+Insert into table UserType values('A','Admin'),('S','Student')
