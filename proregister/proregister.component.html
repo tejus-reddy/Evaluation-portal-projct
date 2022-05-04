@@ -1,0 +1,69 @@
+
+<div class="main">
+    <!-- Sign up form -->
+    <section class="signup">
+        <div class="topleft">
+            <figure><img src="images/Kanini-Logo.svg" alt="Logo" width="300" height="100" ></figure>
+        </div>
+
+        <div class="container">
+
+            <div class="signup-content">
+
+                <div class="signup-form">
+
+                    <h2 class="form-title">Sign up</h2>
+
+                    <form #proregister="ngForm" (ngSubmit)="Register(proregister.value)">
+
+                        <div class="form-group">
+                            <label for="browsers"></label>
+                            <input list="browsers" name="RId" [(ngModel)]="pageData.RId" placeholder="Select sign-up" #RId="ngModel" id="browser">
+                            <datalist id="browsers">
+                                <option value="Admin">
+                                <option value="Student">
+                            </datalist>  
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-email"></i></label>
+                            <input type="email" id="email" name="Rmail"  [(ngModel)]="pageData.RMail" placeholder="Your Email" #Rmail="ngModel" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input type="text" name="Name" id="name" [(ngModel)]="pageData.Name" placeholder="Your Name" #Name="ngModel" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="password" name="RPassword" [(ngModel)]="pageData.RPassword" id="pass" placeholder="Password" #RPassword="ngModel" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                            <input type="password" name="re_pass" id="repass" placeholder="Repeat your password" />
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        </div>
+                        
+                        <div class="form-group form-button">
+                            <button type="submit" class="btn btn-default" >Validate and Login</button>
+                        </div>
+                        
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+
+
+
