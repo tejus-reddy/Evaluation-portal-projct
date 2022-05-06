@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterTable } from '../Model/RegisterTable';
 import { SigninService } from '../signin.service';
 
@@ -9,12 +10,17 @@ import { SigninService } from '../signin.service';
 })
 export class ProregisterComponent implements OnInit {
 
-  constructor(private ConnectionService:SigninService) { }
+  constructor(private ConnectionService:SigninService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   pageData:RegisterTable={RId:"",RMail:"",RPassword:"",Name:""};
+
+  ToHome():void{
+    console.log("Navigating to Home Page");
+    this.router.navigate(['']);
+  }
   
   Register(formdata:any):void
   {
@@ -32,7 +38,8 @@ export class ProregisterComponent implements OnInit {
         alert("Register Successful");
       }
       else{
-        alert("data already present");
+        alert("The entered Mail ID is already present");
+        this.router.navigate(['']);
       }
     })
 
