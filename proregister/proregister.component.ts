@@ -16,6 +16,8 @@ export class ProregisterComponent implements OnInit {
   }
 
   pageData:RegisterTable={RId:"",RMail:"",RPassword:"",Name:""};
+  re_password:any;
+  agree_term:any;
 
   ToHome():void{
     console.log("Navigating to Home Page");

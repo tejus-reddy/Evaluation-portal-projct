@@ -2,15 +2,18 @@
 <div class="main">
     <!-- Sign up form -->
     <section class="signup">
+        
         <div class="topleft">
-            <figure><img src="../images/signin-image.jpg" alt="Logo" width="300" height="100" ></figure>
+            
+            <figure><img src="assets/images/Kanini-Logo.svg" alt="Logo" width="300" height="100" ></figure>
             
         </div>
-
+        
         <div class="container">
-
+               
             <div class="signup-content">
 
+               
                 <div class="signup-form">
 
                     <h2 class="form-title">Sign up</h2>
@@ -21,8 +24,8 @@
                             <label for="browsers"></label>
                             <input list="browsers" name="RId" [(ngModel)]="pageData.RId" placeholder="Select sign-up" #RId="ngModel" id="browser" pattern="Admin|Student">
                             <datalist id="browsers">
-                                <option value="Admin" >
-                                <option value="Student">
+                                <option value="Admin" aria-readonly="true">
+                                <option value="Student" aria-readonly="true">
                             </datalist>  
                         </div>
 
@@ -42,16 +45,21 @@
                         </div>
 
                         <div class="form-group">
+
                             <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" name="re_pass" id="repass" placeholder="Repeat your password" />
+                            <input type="password" name="re_pass" [(ngModel)]="re_password" #cpass="ngModel" pattern="{{pageData.RPassword}}" id="repass" placeholder="Repeat your password" />
+                            <span class="text-danger" *ngIf="cpass.errors?.['pattern']">Please enter the correct value to proceed</span>
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                        <div class="form-group" >
+                            <input type="checkbox" name="agree_term" id="agree-term" class="agree-term"  required />
+                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to all the statements in       <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="#" class="term-service">Terms of service</a></label>
+                            
                         </div>
+            
                         
                         <div class="form-group form-button">
-                            <button type="submit" class="btn btn-default" >Validate and Login</button>
+                            <button type="submit" class="btn btn-default" [disabled]="!proregister.valid" >Validate and Login</button>
+                            
                         </div>
                         
                     </form>
@@ -59,7 +67,7 @@
                 </div>
 
                 <div class="signup-image">
-                    <figure><img src="images/signup-image.jpg" alt="sing up image"></figure>
+                    <figure><img src="assets/images/signup-image.jpg" alt="sing up image"></figure>
                     <a (click)="ToHome()" >Home Page</a>
                 </div>
             </div>

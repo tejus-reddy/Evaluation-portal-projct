@@ -188,7 +188,10 @@ h2 {
 
 .main {
   background: #f8f8f8;
-  padding: 150px 0; }
+
+  /* Upward space decides */
+
+  padding: 50px 0; }
 
 .clear {
   clear: both; }
@@ -251,7 +254,7 @@ body {
   -ms-transform: translate(-50%, -50%); }
 
 .signup {
-  margin-bottom: 150px; }
+  margin-bottom: 20px; }
 
 .signup-content {
   padding: 75px 0; }
@@ -267,7 +270,7 @@ body {
   margin-bottom: 33px; }
 
 .signup-image {
-  margin-top: 45px; }
+  margin-top: 20px; }
 
 figure {
   margin-bottom: 50px;
@@ -364,6 +367,7 @@ input[type=checkbox]:not(old) + label > span {
   margin-right: 15px;
   margin-bottom: 3px;
   border: 1px solid #999;
+  /* border: 1px solid rgb(42, 13, 13); */
   border-radius: 2px;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
@@ -394,9 +398,9 @@ input[type=checkbox]:not(old):checked + label > span:before {
   font-family: 'Material-Design-Iconic-Font';
   font-weight: bold; }
 
-.agree-term {
+/* .agree-term {
   display: inline-block;
-  width: auto; }
+  width: auto; } */
 
 label {
   position: absolute;
@@ -412,13 +416,13 @@ label {
 .label-has-error {
   top: 22%; }
 
-/* label.error {
+label.error {
   position: relative;
-  background: url("../images/unchecked.gif") no-repeat;
+  /* background: url("../images/unchecked.gif") no-repeat; */
   background-position-y: 3px;
   padding-left: 20px;
   display: block;
-  margin-top: 20px; } */
+  margin-top: 20px; }
 
 label.valid {
   display: block;
